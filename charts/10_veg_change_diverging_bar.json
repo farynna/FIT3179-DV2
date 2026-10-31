@@ -1,0 +1,197 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Diverging bar chart showing percentage-point changes in vegetation cover across land uses in Metropolitan Melbourne, 2014–2018.",
+  "width": 470,
+  "height": 445,
+  "padding": {"top": 35, "bottom": 5},
+  "data": {
+    "url": "data/melb_veg_cover_change.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "calculate": "toNumber(replace(datum['Percentage Point Change 2014–2018'], '%', ''))",
+      "as": "Change"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#52665a",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {"datum": 0}
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 3
+      },
+      "encoding": {
+        "y": {
+          "field": "Land Use",
+          "type": "nominal",
+          "sort": {
+            "field": "Change",
+            "op": "min",
+            "order": "ascending"
+          },
+          "scale": {
+            "paddingInner": 0.25,
+            "paddingOuter": 0.1
+          },
+          "axis": {
+            "title": null,
+            "labelLimit": 180,
+            "labelFontSize": 11
+          }
+        },
+        "x": {
+          "field": "Change",
+          "type": "quantitative",
+          "scale": {"domain": [-3, 14]},
+          "axis": {
+            "title": "Percentage-point change (pp)",
+            "grid": true,
+            "tickCount": 6,
+            "format": ".0f"
+          }
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Change < 0",
+            "value": "#e9a3c9"
+          },
+          "value": "#479969"
+        },
+        "tooltip": [
+          {
+            "field": "Land Use",
+            "type": "nominal",
+            "title": "Land use"
+          },
+          {
+            "field": "Change",
+            "type": "quantitative",
+            "title": "Percentage-point change (pp)",
+            "format": "+.1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "joinaggregate": [
+            {
+              "op": "max",
+              "field": "Change",
+              "as": "maxChange"
+            }
+          ]
+        },
+        {
+          "filter": "datum.Change === datum.maxChange"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "Onest",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#ffffff",
+        "align": "right",
+        "dx": -6
+      },
+      "encoding": {
+        "y": {
+          "field": "Land Use",
+          "type": "nominal",
+          "sort": {
+            "field": "Change",
+            "op": "min",
+            "order": "ascending"
+          }
+        },
+        "x": {
+          "field": "Change",
+          "type": "quantitative",
+          "scale": {"domain": [-3, 14]}
+        },
+        "text": {
+          "field": "Change",
+          "type": "quantitative",
+          "format": "+.1f"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "joinaggregate": [
+            {
+              "op": "min",
+              "field": "Change",
+              "as": "minChange"
+            }
+          ]
+        },
+        {
+          "filter": "datum.Change === datum.minChange"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "Onest",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#ffffff",
+        "align": "left",
+        "dx": 6
+      },
+      "encoding": {
+        "y": {
+          "field": "Land Use",
+          "type": "nominal",
+          "sort": {
+            "field": "Change",
+            "op": "min",
+            "order": "ascending"
+          }
+        },
+        "x": {
+          "field": "Change",
+          "type": "quantitative",
+          "scale": {"domain": [-3, 14]}
+        },
+        "text": {
+          "field": "Change",
+          "type": "quantitative",
+          "format": "+.1f"
+        }
+      }
+    }
+  ],
+  "background": "transparent",
+  "config": {
+    "font": "Onest",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Onest",
+      "titleFont": "Onest",
+      "labelColor": "#26382d",
+      "titleColor": "#26382d",
+      "domainColor": "#a6b5a8",
+      "tickColor": "#a6b5a8",
+      "gridColor": "#e2e9e2"
+    },
+    "text": {
+      "font": "Onest"
+    }
+  }
+}

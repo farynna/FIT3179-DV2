@@ -1,0 +1,176 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap showing adjusted odds ratios (AORs) for children's mental health outcomes by public open space accessibility and child-friendliness, 2022.",
+  "width": 425,
+  "height": 250,
+  "padding": {
+    "left": 52,
+    "top": 15,
+    "bottom": 5
+  },
+  "data": {
+    "url": "data/childrens_mh.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "calculate": "toNumber(datum.AOR)",
+      "as": "AOR_value"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#ffffff",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "POS access measure",
+          "type": "nominal",
+          "sort": [
+            "Non-child friendly, 400 m",
+            "Child friendly, 400 m",
+            "Non-child friendly, 800 m",
+            "Child friendly, 800 m"
+          ],
+          "axis": {
+            "title": "Public open space access measure",
+            "titleFontSize": 12,
+            "labelAngle": -35,
+            "labelLimit": 180,
+            "labelFontSize": 12,
+            "titlePadding": 20
+          }
+        },
+        "y": {
+          "field": "Mental health outcome",
+          "type": "nominal",
+          "sort": [
+            "Externalising difficulties",
+            "Internalising difficulties",
+            "Competence"
+          ],
+          "axis": {
+            "title": null,
+            "labelLimit": 200,
+            "labelFontSize": 12,
+            "labelExpr": "split(datum.label, ' ')"
+          }
+        },
+        "color": {
+          "field": "AOR_value",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0.92, 1, 1.1],
+            "range": [
+              "#d9f0d3",
+              "#74c476",
+              "#006d2c"
+            ]
+          },
+          "legend": {
+            "title": "Adjusted odds ratio (AOR)",
+            "orient": "none",
+            "format": ".2f",
+            "direction": "horizontal",
+            "legendX": 60,
+            "legendY": 420,
+            "gradientLength": 300
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Mental health outcome",
+            "type": "nominal",
+            "title": "Mental health outcome"
+          },
+          {
+            "field": "POS access measure",
+            "type": "nominal",
+            "title": "POS access measure"
+          },
+          {
+            "field": "AOR_value",
+            "type": "quantitative",
+            "title": "Adjusted odds ratio",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.AOR_value === 0.92 || datum.AOR_value === 1.07 || datum.AOR_value === 1.10"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "Onest",
+        "fontSize": 13,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {
+          "field": "POS access measure",
+          "type": "nominal",
+          "sort": [
+            "Non-child friendly, 400 m",
+            "Child friendly, 400 m",
+            "Non-child friendly, 800 m",
+            "Child friendly, 800 m"
+          ]
+        },
+        "y": {
+          "field": "Mental health outcome",
+          "type": "nominal",
+          "sort": [
+            "Externalising difficulties",
+            "Internalising difficulties",
+            "Competence"
+          ]
+        },
+        "text": {
+          "field": "AOR_value",
+          "type": "quantitative",
+          "format": ".2f"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.AOR_value === 1.07 || datum.AOR_value === 1.10",
+            "value": "white"
+          },
+          "value": "#173b24"
+        }
+      }
+    }
+  ],
+  "background": "transparent",
+  "config": {
+    "font": "Onest",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Onest",
+      "titleFont": "Onest",
+      "labelColor": "#26382d",
+      "titleColor": "#26382d",
+      "domainColor": "#a6b5a8",
+      "tickColor": "#a6b5a8"
+    },
+    "legend": {
+      "labelFont": "Onest",
+      "labelColor": "#26382d",
+      "titleFont": "Onest",
+      "titleColor": "#26382d"
+    },
+    "text": {
+      "font": "Onest"
+    }
+  }
+}

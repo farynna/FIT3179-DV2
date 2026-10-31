@@ -1,0 +1,123 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbol map showing green spaces per 100,000 residents across Australia's eight Greater Capital City Statistical Areas, 2023.",
+  "width": "container",
+  "background": "transparent",
+  "height": 465,
+  "padding": {
+    "bottom": 85
+  },
+  "projection": {
+    "type": "mercator",
+    "center": [134, -27],
+    "scale": 620
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/states.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#edf1f0",
+        "stroke": "#8b9a90",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "data": {
+        "url": "data/greenspaces_by_capital.csv",
+        "format": {
+          "type": "csv"
+        }
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.78,
+        "stroke": "#0e2d1c",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "Longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "Number of Greenspaces per 100,000 residents",
+          "type": "quantitative",
+          "scale": {
+            "domain": [200, 450],
+            "range": [100, 1800]
+          },
+          "legend": {
+            "title": "Green spaces per 100,000 residents",
+            "orient": "none",
+            "legendX": 110,
+            "legendY": 485,
+            "direction": "horizontal",
+            "labelExpr": "format(datum.value, ',.0f')",
+            "titleLimit": 300,
+            "gradientLength": 300
+          }
+        },
+        "color": {
+          "value": "#21603c"
+        },
+        "tooltip": [
+          {
+            "field": "Greater Capital City",
+            "type": "nominal",
+            "title": "Capital city"
+          },
+          {
+            "field": "Number of Greenspaces",
+            "type": "quantitative",
+            "title": "Total green spaces",
+            "format": ","
+          },
+          {
+            "field": "Population",
+            "type": "quantitative",
+            "title": "Population",
+            "format": ","
+          },
+          {
+            "field": "Number of Greenspaces per 100,000 residents",
+            "type": "quantitative",
+            "title": "Green spaces per 100,000 residents",
+            "format": ".0f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "font": "Onest",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Onest",
+      "titleFont": "Onest",
+      "labelColor": "#26382d",
+      "titleColor": "#26382d"
+    },
+    "legend": {
+      "labelFont": "Onest",
+      "titleFont": "Onest",
+      "labelColor": "#26382d",
+      "titleColor": "#26382d"
+    },
+    "text": {
+      "font": "Onest"
+    }
+  }
+}

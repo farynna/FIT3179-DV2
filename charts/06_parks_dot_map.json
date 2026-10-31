@@ -1,0 +1,85 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dot map showing geographical distribution of national parks across Australia, 2024.",
+  "width": 550,
+  "height": 550,
+  "padding": {
+    "left": 18,
+    "bottom": 28
+  },
+  "projection": {
+    "type": "mercator",
+    "center": [134, -27],
+    "scale": 750
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "transform": [
+        {"filter": "datum.id == 36"}
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8eee4",
+        "stroke": "#a6b5a8",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "data": {
+        "url": "data/capad_parks_2024.csv",
+        "format": {
+          "type": "csv"
+        }
+      },
+      "mark": {
+        "type": "circle",
+        "size": 24,
+        "color": "#21603c",
+        "opacity": 0.75,
+        "stroke": "#fefff1",
+        "strokeWidth": 0.4
+      },
+      "encoding": {
+        "longitude": {
+          "field": "LONGITUDE",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "LATITUDE",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "NAME",
+            "type": "nominal",
+            "title": "National park"
+          },
+          {
+            "field": "STATE",
+            "type": "nominal",
+            "title": "State / territory"
+          },
+          {
+            "field": "TYPE",
+            "type": "nominal",
+            "title": "Classification"
+          }
+        ]
+      }
+    }
+  ],
+  "background": "transparent",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Onest"
+  }
+}

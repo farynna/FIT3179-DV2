@@ -1,0 +1,115 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbol map showing accessibility to public open space across Australia's eight capital cities, 2018.",
+  "width": "container",
+  "background": "transparent",
+  "height": 465,
+  "padding": {
+    "bottom": 100
+  },
+  "projection": {
+    "type": "mercator",
+    "center": [134, -27],
+    "scale": 620
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/states.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#edf1f0",
+        "stroke": "#8b9a90",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "data": {
+        "url": "data/accessibility_by_urban_area.csv",
+        "format": {
+          "type": "csv"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "toNumber(replace(datum['Access to open space (%)'], '%', ''))",
+          "as": "AccessValue"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.82,
+        "stroke": "#245539",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "longitude": {
+          "field": "Longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "AccessValue",
+          "type": "quantitative",
+          "scale": {
+            "domain": [20, 100],
+            "range": [50, 2200]
+          },
+          "legend": {
+            "title": "Access to open space (%)",
+            "orient": "none",
+            "legendX": 170,
+            "legendY": 485,
+            "direction": "horizontal",
+            "labelExpr": "format(datum.value, ',.0f')"
+          }
+        },
+        "color": {
+          "value": "#459e45"
+        },
+        "tooltip": [
+          {
+            "field": "Greater Capital City Area",
+            "type": "nominal",
+            "title": "Capital city"
+          },
+          {
+            "field": "AccessValue",
+            "type": "quantitative",
+            "title": "Access to open space (%)",
+            "format": ".0f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "font": "Onest",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Onest",
+      "titleFont": "Onest",
+      "labelColor": "#26382d",
+      "titleColor": "#26382d"
+    },
+    "legend": {
+      "labelFont": "Onest",
+      "titleFont": "Onest",
+      "labelColor": "#26382d",
+      "titleColor": "#26382d"
+    },
+    "text": {
+      "font": "Onest"
+    }
+  }
+}

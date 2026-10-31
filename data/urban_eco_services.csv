@@ -1,0 +1,85 @@
+City,Scenario,Service,Value,Unit
+Adelaide,BAU,Carbon sequestration,6,Thousand tonnes/year
+Adelaide,Moderate,Carbon sequestration,8,Thousand tonnes/year
+Adelaide,High,Carbon sequestration,11,Thousand tonnes/year
+Melbourne,BAU,Carbon sequestration,41,Thousand tonnes/year
+Melbourne,Moderate,Carbon sequestration,62,Thousand tonnes/year
+Melbourne,High,Carbon sequestration,84,Thousand tonnes/year
+Perth,BAU,Carbon sequestration,5,Thousand tonnes/year
+Perth,Moderate,Carbon sequestration,7,Thousand tonnes/year
+Perth,High,Carbon sequestration,9,Thousand tonnes/year
+Sydney,BAU,Carbon sequestration,31,Thousand tonnes/year
+Sydney,Moderate,Carbon sequestration,43,Thousand tonnes/year
+Sydney,High,Carbon sequestration,56,Thousand tonnes/year
+Adelaide,BAU,Carbon retention,157,Thousand tonnes
+Adelaide,Moderate,Carbon retention,223,Thousand tonnes
+Adelaide,High,Carbon retention,291,Thousand tonnes
+Melbourne,BAU,Carbon retention,2169,Thousand tonnes
+Melbourne,Moderate,Carbon retention,3269,Thousand tonnes
+Melbourne,High,Carbon retention,4413,Thousand tonnes
+Perth,BAU,Carbon retention,300,Thousand tonnes
+Perth,Moderate,Carbon retention,399,Thousand tonnes
+Perth,High,Carbon retention,500,Thousand tonnes
+Sydney,BAU,Carbon retention,1286,Thousand tonnes
+Sydney,Moderate,Carbon retention,1799,Thousand tonnes
+Sydney,High,Carbon retention,2325,Thousand tonnes
+Adelaide,BAU,Air filtration,2,Tonnes/year
+Adelaide,Moderate,Air filtration,2,Tonnes/year
+Adelaide,High,Air filtration,3,Tonnes/year
+Melbourne,BAU,Air filtration,15,Tonnes/year
+Melbourne,Moderate,Air filtration,23,Tonnes/year
+Melbourne,High,Air filtration,31,Tonnes/year
+Perth,BAU,Air filtration,4,Tonnes/year
+Perth,Moderate,Air filtration,6,Tonnes/year
+Perth,High,Air filtration,7,Tonnes/year
+Sydney,BAU,Air filtration,14,Tonnes/year
+Sydney,Moderate,Air filtration,19,Tonnes/year
+Sydney,High,Air filtration,25,Tonnes/year
+Adelaide,BAU,Local climate regulation,57,Days above 35 degrees Celsius/year
+Adelaide,Moderate,Local climate regulation,47,Days above 35 degrees Celsius/year
+Adelaide,High,Local climate regulation,34,Days above 35 degrees Celsius/year
+Melbourne,BAU,Local climate regulation,34,Days above 35 degrees Celsius/year
+Melbourne,Moderate,Local climate regulation,23,Days above 35 degrees Celsius/year
+Melbourne,High,Local climate regulation,12,Days above 35 degrees Celsius/year
+Perth,BAU,Local climate regulation,75,Days above 35 degrees Celsius/year
+Perth,Moderate,Local climate regulation,63,Days above 35 degrees Celsius/year
+Perth,High,Local climate regulation,52,Days above 35 degrees Celsius/year
+Sydney,BAU,Local climate regulation,55,Days above 35 degrees Celsius/year
+Sydney,Moderate,Local climate regulation,43,Days above 35 degrees Celsius/year
+Sydney,High,Local climate regulation,31,Days above 35 degrees Celsius/year
+Adelaide,BAU,Water regulation (trees),123,Kilolitres/year
+Adelaide,Moderate,Water regulation (trees),175,Kilolitres/year
+Adelaide,High,Water regulation (trees),229,Kilolitres/year
+Melbourne,BAU,Water regulation (trees),3809,Kilolitres/year
+Melbourne,Moderate,Water regulation (trees),5739,Kilolitres/year
+Melbourne,High,Water regulation (trees),7748,Kilolitres/year
+Perth,BAU,Water regulation (trees),291,Kilolitres/year
+Perth,Moderate,Water regulation (trees),386,Kilolitres/year
+Perth,High,Water regulation (trees),484,Kilolitres/year
+Sydney,BAU,Water regulation (trees),1109,Kilolitres/year
+Sydney,Moderate,Water regulation (trees),1552,Kilolitres/year
+Sydney,High,Water regulation (trees),2005,Kilolitres/year
+Adelaide,BAU,Water regulation (other),187,Kilolitres/year
+Adelaide,Moderate,Water regulation (other),223,Kilolitres/year
+Adelaide,High,Water regulation (other),255,Kilolitres/year
+Melbourne,BAU,Water regulation (other),1434,Kilolitres/year
+Melbourne,Moderate,Water regulation (other),1702,Kilolitres/year
+Melbourne,High,Water regulation (other),1936,Kilolitres/year
+Perth,BAU,Water regulation (other),903,Kilolitres/year
+Perth,Moderate,Water regulation (other),1059,Kilolitres/year
+Perth,High,Water regulation (other),1193,Kilolitres/year
+Sydney,BAU,Water regulation (other),1702,Kilolitres/year
+Sydney,Moderate,Water regulation (other),2057,Kilolitres/year
+Sydney,High,Water regulation (other),2379,Kilolitres/year
+Adelaide,BAU,Recreation enabling and visual amenity,15200,Hectares
+Adelaide,Moderate,Recreation enabling and visual amenity,18160,Hectares
+Adelaide,High,Recreation enabling and visual amenity,20970,Hectares
+Melbourne,BAU,Recreation enabling and visual amenity,29440,Hectares
+Melbourne,Moderate,Recreation enabling and visual amenity,35790,Hectares
+Melbourne,High,Recreation enabling and visual amenity,41990,Hectares
+Perth,BAU,Recreation enabling and visual amenity,33090,Hectares
+Perth,Moderate,Recreation enabling and visual amenity,37610,Hectares
+Perth,High,Recreation enabling and visual amenity,41830,Hectares
+Sydney,BAU,Recreation enabling and visual amenity,38830,Hectares
+Sydney,Moderate,Recreation enabling and visual amenity,46330,Hectares
+Sydney,High,Recreation enabling and visual amenity,53460,Hectares

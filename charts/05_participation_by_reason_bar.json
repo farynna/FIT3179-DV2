@@ -1,0 +1,147 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Horizontal bar chart showing reasons Australians participate in nature-based activities, 2011–2012.",
+  "width": 420,
+  "height": 360,
+  "padding": {
+    "top": 35,
+    "bottom": 20
+  },
+  "data": {
+    "url": "data/participation_by_reason.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "calculate": "toNumber(datum.Participants)",
+      "as": "ParticipantsValue"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "ParticipantsValue",
+          "as": "MaxParticipants"
+        }
+      ]
+    },
+    {
+      "calculate": "format(datum.ParticipantsValue, '.1f') + '%'",
+      "as": "Label"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#479969",
+        "cornerRadiusEnd": 3
+      },
+      "encoding": {
+        "y": {
+          "field": "Reason for participation",
+          "type": "nominal",
+          "sort": {
+            "field": "ParticipantsValue",
+            "op": "max",
+            "order": "descending"
+          },
+          "scale": {
+            "paddingInner": 0.3
+          },
+          "axis": {
+            "title": null,
+            "labelLimit": 250,
+            "labelFontSize": 11.5,
+            "labelExpr": "split(slice(replace(datum.label, regexp('(.{1,22})( |$)', 'g'), '$1|'), 0, -1), '|')"
+          }
+        },
+        "x": {
+          "field": "ParticipantsValue",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100]
+          },
+          "axis": {
+            "title": "Participants (%)",
+            "titleFontSize": 11.5,
+            "grid": true,
+            "tickCount": 6
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Reason for participation",
+            "type": "nominal",
+            "title": "Reason"
+          },
+          {
+            "field": "ParticipantsValue",
+            "type": "quantitative",
+            "title": "Participants (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.ParticipantsValue === datum.MaxParticipants"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#21603c"
+      },
+      "encoding": {
+        "y": {
+          "field": "Reason for participation",
+          "type": "nominal",
+          "sort": {
+            "field": "ParticipantsValue",
+            "op": "max",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "ParticipantsValue",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "background": "transparent",
+  "config": {
+    "font": "Onest",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Onest",
+      "titleFont": "Onest",
+      "labelColor": "#26382D",
+      "titleColor": "#26382D",
+      "domainColor": "#A6B5A8",
+      "tickColor": "#A6B5A8",
+      "gridColor": "#E2E9E2"
+    },
+    "legend": {
+      "labelFont": "Onest",
+      "titleFont": "Onest"
+    },
+    "text": {
+      "font": "Onest"
+    }
+  }
+}

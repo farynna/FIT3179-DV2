@@ -1,0 +1,224 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dumbbell chart comparing male and female participation rates in selected nature environment-related activities in Australia, 2011–2012.",
+  "width": 380,
+  "height": 350,
+  "padding": {
+    "left": 40,
+    "top": 45,
+    "bottom": 12
+  },
+  "data": {
+    "url": "data/participation_by_sex.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "fold": [
+        "Natural environment-related activities",
+        "Nature conservation at home/on farm",
+        "Paid conservation work",
+        "Voluntary conservation work",
+        "Nature conservation advocacy"
+      ],
+      "as": ["Activity", "Rate"]
+    },
+    {
+      "calculate": "toNumber(datum.Rate)",
+      "as": "Rate"
+    }
+  ],
+  "layer": [
+    {
+      "transform": [
+        {
+          "pivot": "Sex",
+          "value": "Rate",
+          "groupby": ["Activity"]
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "stroke": "#a6b5a8",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "y": {
+          "field": "Activity",
+          "type": "nominal",
+          "sort": [
+            "Natural environment-related activities",
+            "Nature conservation at home/on farm",
+            "Nature conservation advocacy",
+            "Voluntary conservation work",
+            "Paid conservation work"
+          ],
+          "axis": {
+            "title": null,
+            "labelLimit": 300,
+            "labelFontSize": 11.5,
+            "labelExpr": "split(slice(replace(datum.label, regexp('(.{1,22})( |$)', 'g'), '$1|'), 0, -1), '|')"
+          }
+        },
+        "x": {
+          "field": "Male",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 80]
+          },
+          "axis": {
+            "title": "Participation rate (%)",
+            "grid": true,
+            "tickCount": 5
+          }
+        },
+        "x2": {
+          "field": "Female"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 150,
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "Activity",
+          "type": "nominal",
+          "sort": [
+            "Natural environment-related activities",
+            "Nature conservation at home/on farm",
+            "Nature conservation advocacy",
+            "Voluntary conservation work",
+            "Paid conservation work"
+          ],
+          "axis": {
+            "title": null,
+            "labelLimit": 300,
+            "labelFontSize": 12
+          }
+        },
+        "x": {
+          "field": "Rate",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 80]
+          },
+          "axis": {
+            "title": "Participation rate (%)",
+            "titleFontSize": 11.5
+          }
+        },
+        "color": {
+          "field": "Sex",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Male", "Female"],
+            "range": ["#21603c", "#91c788"]
+          },
+          "legend": {
+            "title": "Sex",
+            "orient": "bottom",
+            "titleFontSize": 12,
+            "labelFontSize": 12
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Activity",
+            "type": "nominal",
+            "title": "Activity"
+          },
+          {
+            "field": "Sex",
+            "type": "nominal",
+            "title": "Sex"
+          },
+          {
+            "field": "Rate",
+            "type": "quantitative",
+            "title": "Participation rate (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "pivot": "Sex",
+          "value": "Rate",
+          "groupby": ["Activity"]
+        },
+        {
+          "filter": "datum.Activity === 'Nature conservation advocacy'"
+        },
+        {
+          "calculate": "(datum.Male + datum.Female) / 2",
+          "as": "Midpoint"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -16,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#21603c"
+      },
+      "encoding": {
+        "y": {
+          "field": "Activity",
+          "type": "nominal",
+          "sort": [
+            "Natural environment-related activities",
+            "Nature conservation at home/on farm",
+            "Nature conservation advocacy",
+            "Voluntary conservation work",
+            "Paid conservation work"
+          ]
+        },
+        "x": {
+          "field": "Midpoint",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 80]
+          }
+        },
+        "text": {
+          "value": "3.7 pp"
+        }
+      }
+    }
+  ],
+  "background": "transparent",
+  "config": {
+    "font": "Onest",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Onest",
+      "titleFont": "Onest",
+      "labelColor": "#26382d",
+      "titleColor": "#26382d",
+      "domainColor": "#a6b5a8",
+      "tickColor": "#a6b5a8",
+      "gridColor": "#e2e9e2"
+    },
+    "legend": {
+      "labelFont": "Onest",
+      "titleFont": "Onest",
+      "labelColor": "#26382d",
+      "titleColor": "#26382d"
+    },
+    "text": {
+      "font": "Onest"
+    }
+  }
+}

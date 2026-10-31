@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Greener Side of Australia</title>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Import fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,0..144,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Import Vega libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <!-- JavaScript file -->
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- Introduction -->
+    <header>
+        <h1>The <span class="title-green">Greener Side</span> <span class="title-accent">of Australia</span></h1>
+        <p class="tagline">Community gardens. Public parks. Nature reserves.</p>
+        <p>
+            Green spaces take many forms, shaping the environments we live in and how we experience nature.
+        </p>
+        <p>
+            Scroll to discover the distribution of urban green spaces in Australia, how people engage with them, what these spaces give back, and how they’ve changed over time.
+        </p>
+        <p class="author">
+            By Farynna Faizal | October 2026
+        </p>
+    </header>
+
+    <main>
+        <!-- Section 1: Distribution and Access -->
+        <section id="distribution">
+            <h2>01 — Distribution and Access</h2>
+            <h3>Are Australia’s cities green enough?</h3>
+
+            <div class="intro-row">
+                <p class="context-text chart1-context" style="font-size: 1.18rem;">
+                    Two cities.
+                    <br>Approximately the same number of green spaces
+                    <br>per capita.
+                    <br>Different levels of accessibility to these spaces.
+                </p>
+                <p class="context-text chart1-context-2">
+                    The following maps explore two different aspects of urban green space across Australia's eight capital cities¹: the
+                    <span class="quantity-word">quantity</span> of public green spaces relative to the city's population, and the level of
+                    <span class="accessibility-word">accessibility</span>² to public open spaces in each city.
+                </p>
+            </div>
+
+            <!-- Charts 1 and 2 -->
+            <div class="chart-row">
+                <div class="chart-card">
+                    <h4>Number of public green spaces per 100,000 residents across Australian capital cities, 2023</h4>
+                    <div class="map-container">
+                        <div id="chart1"></div>
+
+                        <div class="map-callout-1">
+                            <span class="callout-title">Melbourne</span>
+                            <p><span class="green-number">422</span> green spaces per 100,000 residents</p>
+                            <p><span class="access-number">49%</span> open space accessibility</p>
+                        </div>
+
+                        <div class="map-callout-2">
+                            <span class="callout-title">Canberra</span>
+                            <p><span class="green-number">421</span> green spaces per 100,000 residents</p>
+                            <p><span class="access-number">72%</span> open space accessibility</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h4>Accessibility to public open spaces across Australian capital cities, 2018</h4>
+                    <div id="chart2"></div>
+                </div>
+            </div>
+
+            <div class="bottom-row">
+                <p class="context-text">
+                    A city may have many parks, gardens, and other open spaces, but numbers alone don't tell the whole story. Melbourne and Canberra both have approximately 420 green spaces per 100,000 residents — yet Canberra's public open space accessibility is <b>23 percentage points</b> higher than Melbourne's.
+                    Distribution does not always reflect access.
+                </p>
+
+                <p class="footnote-chart1">
+                    ¹ “Capital city” refers to the Greater Capital City Statistical Area (GCCSA). Symbols are positioned at the coordinates of the corresponding capital cities.
+                </p>
+
+                <p class="footnote-chart1">
+                    ² Accessibility = the proportion of dwellings within 400 metres’ walking distance of a public open space measuring at least 1.5 hectares. Figures are from 2018 and may not reflect current conditions. The charts provide complementary perspectives, not a direct comparison.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- Section 2: People and Nature -->
+        <section id="people">
+            <h2>02 — People and Nature</h2>
+            <h3>How do Australians engage with green spaces?</h3>
+
+            <!-- Chart 3 -->
+            <div class="chart-row">
+                <div class="chart-card">
+                    <h4>Australian adult participation rates in selected nature-based activities, by gender, 2011–2012</h4>
+                    <div id="chart3"></div>
+                </div>
+
+                <div class="chart-card">
+                    <p class="context-text chart3-context">
+                        Participation was relatively balanced between genders across all activities.
+                        <br><br>The most notable difference was seen in nature conservation advocacy, where the female participation rate was higher by <b>3.7 percentage points</b>.
+                        <br><br>Natural environment-related activities attracted the highest participation rate for both genders, at around <b>73%</b>.
+                        <br><br>In contrast, for both genders, <b>fewer than 5%</b> participated in paid or voluntary conservation work.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Charts 4 and 5 -->
+            <div class="chart-row">
+                <div class="chart-card">
+                    <h4>Australian adult participation rates in selected nature-based recreational activities, 2011–2012</h4>
+                    <div id="chart4"></div>
+                    <p class="context-text chart4-context">
+                        <br>National parks and botanic gardens were the most popular nature-based recreational destinations,
+                        reported by almost <b>half</b> the respondents in this study, followed by nature walks and camping.<br><br>
+                    </p>
+                </div>
+
+                <div class="chart-card">
+                    <h4>Reasons Australian adults participate in nature-based activities, 2011–2012</h4>
+                    <div id="chart5"></div>
+                    <p class="context-text chart5-context">
+                        Enjoyment was the leading reason for participation, reported by <b>over 90%</b> of participants, followed by social reasons and exercise.
+                        Overall, the findings suggest that Australian adults engage with nature primarily for recreation, socialising, and physical activity.
+                    </p>
+                </div>
+            </div>
+
+            <h3>National parks are a popular destination. <br>Where can they be found?</h3>
+
+            <!-- Chart 6 -->
+            <div class="chart-row">
+                <div class="chart-card" style="grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center;">
+                    <p class="context-text chart6-pre-context" style="text-align: center;">Explore the distribution of national parks in Australia. <br>Each dot marks one park.<br><br></p>
+                    <h4 class="chart6-title" style="width: 100%; text-align: center;">Geographical distribution of national parks across Australia, 2024</h4>
+                    <div id="chart6"></div>
+                    <p class="context-text chart6-context" style="text-align: center; max-width: 650px;">
+                        National parks are concentrated along Australia's <b>eastern coastline</b>, <br>with smaller clusters in Tasmania and the Southwest.
+                        <br><br>In contrast, Australia's interior has a much sparser distribution.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 3: More Than Just Green -->
+        <section id="importance">
+            <h2>03 — More Than Just Green</h2>
+            <h3>Why do these green spaces matter?</h3>
+
+            <!-- Chart 7 -->
+            <div class="chart-row">
+                <div class="chart-card">
+                    <p class="context-text chart7-context">
+                        The adjusted odds ratio (AOR) in this study compares the odds of experiencing a mental health outcome between children with and without access to public open spaces such as parks.
+                        <br><br>An AOR <b>below 1</b> indicates <b>lower odds</b> of the mental health outcome; an AOR <b>above 1</b> indicates <b>higher odds</b>.
+                        <br><br>
+                        Children with access to public open spaces generally showed better odds of mental health outcomes, particularly when spaces were <b>within 800 metres of home</b>. They were less likely to experience externalising difficulties, and more likely to show higher competence.
+                    </p>
+                    <p class="footnote-chart7">
+                        Note: Child-friendly space = a public open space with both a playground and a public toilet within 100 metres distance.
+                    </p>
+                </div>
+
+                <div class="chart-card">
+                    <h4>Access to public open space and children’s mental health, 2022</h4>
+                    <div id="chart7"></div>
+                </div>
+            </div>
+
+            <!-- Chart 8 -->
+            <div class="chart-row">
+                <div class="chart-card">
+                    <h4>How urban green infrastructure supports ecosystem services across four Australian cities (2030 scenarios: BAU and High)</h4>
+                    <div id="chart8"></div>
+                </div>
+
+                <div class="chart-card">
+                    <p class="context-text chart8-context">
+                        <i>BAU (business as usual)</i> describes the current land use with no change in policy. <i>High</i> increases <b>tree canopy</b> and <b>water retention</b>, and <b>cuts hard surfaces by 35%</b> across the four cities. All values are simulated for 2030.
+                    </p>
+                    <p class="context-text chart8-context-2">
+                        In the <i>High</i> scenario, <b>every city</b> gains on <b>every service</b>. Across the four cities, the number of days above 35°C per year is estimated to fall from <b>221</b> to <b>129</b>.
+                        <br><br>Combined, carbon sequestration, carbon retention, air filtration and tree water regulation all approximately double, while recreation space and other water regulation rise by about a third.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 4: An Ever-Changing Landscape -->
+        <section id="change">
+            <h2>04 — An Ever-Changing Landscape</h2>
+            <h3>How has Australia’s green cover changed over time?</h3>
+
+            <!-- Charts 9 and 10 -->
+            <div class="chart-row">
+                <div class="chart-card">
+                    <h4>Percentage change in tree cover across Australian states <br>and territories, 2016–2020</h4>
+                    <div id="chart9"></div>
+                    <p class="context-text chart9-context">
+                        Tree cover grew in varying amounts across most Australian states and territories, increasing the most in Tasmania (<b>11.52%</b>).
+                        Only the Northern Territory saw a slight decline of <b>0.1%</b>.
+                    </p>
+                </div>
+
+                <div class="chart-card">
+                    <h4>Percentage-point change in vegetation cover across land uses in Metropolitan Melbourne, 2014–2018</h4>
+                    <div id="chart10"></div>
+                    <p class="context-text chart10-context">
+                        Looking more closely at Metropolitan Melbourne, transport land recorded the largest increase in vegetation cover (<b>12.5 percentage points</b>). Conversely, residential and primary production land experienced declines (<b>−2.8</b> and <b>−0.6 percentage points</b> respectively).
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Conclusion -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-left">
+                <p style="font-size: 1.1rem;">
+                    Green spaces are about more than how many parks or gardens a city has; <b>accessibility</b> matters just as much as <b>availability</b>.
+                    <br><br>Access to nature supports wellbeing,
+                    while greener urban environments can help reduce extreme heat and strengthen ecosystem services.
+                    <br><br>Although tree cover is increasing across most Australian
+                    states and territories, progress remains uneven, highlighting the need to make green spaces more accessible and protect them for the future.
+                </p>
+            </div>
+
+            <div class="footer-right">
+                <div class="footer-meta">
+                    <div>
+                        <small>
+                            <b class="sources-title">Author</b>
+                            <br>Farynna Faizal (34074554)
+                        </small>
+                    </div>
+
+                    <div>
+                        <small>
+                            <b class="sources-title">Last Modified</b>
+                            <br>31 October 2026
+                        </small>
+                    </div>
+                </div>
+
+                <small>
+                    <br><br><b class="notes-title">Notes and Limitations</b>
+                    <br>
+                    • Some studies measure public open space rather than green space. Public open space generally includes publicly accessible areas such as parks, gardens and other outdoor recreational spaces. However, not all public open spaces are necessarily green spaces.
+                    <br><br>
+                    • Data sources cover different years and geographical areas, so figures do not necessarily represent the same period or support direct comparisons.
+                </small>
+            </div>
+        </div>
+
+        <div class="footer-sources">
+            <small>
+                <b class="sources-title">Data Sources, Geographical Data & Typefaces</b>
+                <br>
+
+                <div class="sources-grid">
+                    <div class="sources-column">
+                        <div class="reference">
+                            Alderton, A., O'Connor, M., Badland, H., Gunn, L., Boulangé, C., & Villanueva, K. (2022). Access to and quality of neighbourhood public open space and children's mental health outcomes: Evidence from population linked data across eight Australian capital cities. <i>International Journal of Environmental Research and Public Health, 19</i>(11), 6780.
+                            <a href="https://doi.org/10.3390/ijerph19116780" target="_blank">https://doi.org/10.3390/ijerph19116780</a>
+                        </div>
+
+                        <div class="reference">
+                            Australian Bureau of Statistics. (2013, March 26). <i>Community engagement with nature conservation, Australia, 2011–12</i> (Catalogue No. 4602.0.00.002).
+                            <a href="https://www.abs.gov.au/ausstats/abs@.nsf/Lookup/4602.0.00.002main+features52011-12" target="_blank">https://www.abs.gov.au/ausstats/abs@.nsf/Lookup/4602.0.00.002main+features52011-12</a>
+                        </div>
+
+                        <div class="reference">
+                            Australian Bureau of Statistics. (2024, March 26). <i>Regional population, 2022–23</i>.
+                            <a href="https://www.abs.gov.au/statistics/people/population/regional-population/2022-23" target="_blank">https://www.abs.gov.au/statistics/people/population/regional-population/2022-23</a>
+                        </div>
+
+                        <div class="reference">
+                            Cheesman, J., & Rogers, A. (2023, April). <i>Urban ecosystem pilot accounts: Final report</i>. Marsden Jacob Associates.
+                            <a href="https://www.marsdenjacob.com.au/wp-content/uploads/2025/03/Urban-Ecosystem-Accounts_FINAL-2025-Web.pdf" target="_blank">https://www.marsdenjacob.com.au/wp-content/uploads/2025/03/Urban-Ecosystem-Accounts_FINAL-2025-Web.pdf</a>
+                        </div>
+
+                        <div class="reference">
+                            Department of Climate Change, Energy, the Environment and Water. (2024). <i>Collaborative Australian Protected Areas Database (CAPAD) 2024</i> [Data set]. Australian Government.
+                            <a href="https://fed.dcceew.gov.au/" target="_blank">https://fed.dcceew.gov.au/</a>
+                        </div>
+                        <br><b class="sources-title genai-title">Generative AI Acknowledgement</b>
+                        <div class="reference">
+                            Claude AI
+                            (<a href="https://claude.com/" target="_blank">https://claude.com/</a>)
+                            was used to assist in developing and refining HTML, CSS, and JavaScript code for content, styling, and animations, as well as Vega-Lite specifications for charts. No collected data was modified. All design
+                            choices were made by the author.
+                        </div>
+                    </div>
+
+                    <div class="sources-column">
+                        <div class="reference">
+                            Hill, S., Cumpston, Z., & Vigiola, G. Q. (2021). Urban: Key findings. In <i>Australia state of the environment 2021</i>. Australian Government Department of Agriculture, Water and the Environment.
+                            <a href="https://doi.org/10.26194/G1G4-4J51" target="_blank">https://doi.org/10.26194/G1G4-4J51</a>
+                        </div>
+
+                        <div class="reference">
+                            Hogan, R. (n.d.). <i>states.geojson</i> [Data set]. GitHub.
+                            <a href="https://github.com/rowanhogan/australian-states/tree/master" target="_blank">https://github.com/rowanhogan/australian-states/tree/master</a>
+                        </div>
+
+                        <div class="reference">
+                            Hooper, P., & Edwards, N. (2024). The Australian Park Life project: Development of a nationally standardised spatial layer and public participatory GIS for greenspace in Australian capital cities. <i>MethodsX, 13</i>, Article 102856.
+                            <a href="https://doi.org/10.1016/j.mex.2024.102856" target="_blank">https://doi.org/10.1016/j.mex.2024.102856</a>
+                        </div>
+
+                        <div class="reference">
+                            Hurley, J., Saunders, A., Both, A., Sun, C., Boruff, B., Duncan, J., Amati, M., Caccetta, P., & Chia, J. (2019). <i>Urban vegetation cover change in Melbourne: 2014–2018</i>. Centre for Urban Research, RMIT University.
+                            <a href="https://nespurban.edu.au/wp-content/uploads/2019/07/urban-vegetation-cover-change.pdf" target="_blank">https://nespurban.edu.au/wp-content/uploads/2019/07/urban-vegetation-cover-change.pdf</a>
+                        </div>
+
+                        <div class="reference">
+                            SimpleMaps. (n.d.). <i>Australia cities database</i> [Data set].
+                            <a href="https://simplemaps.com/data/au-cities" target="_blank">https://simplemaps.com/data/au-cities</a>
+                        </div>
+
+                        <div class="reference">
+                            Undercase Type, Charles, P., & Zimbardi, F. (n.d.). <i>Fraunces</i> [Font]. Google Fonts.
+                            <a href="https://fonts.google.com/specimen/Fraunces" target="_blank">https://fonts.google.com/specimen/Fraunces</a>
+                        </div>
+
+                        <div class="reference">
+                            Voloshin, D., & Kudryavtsev, A. (n.d.).
+                            <i>Onest</i> [Font]. Google Fonts.
+                            <a href="https://fonts.google.com/specimen/Onest" target="_blank">https://fonts.google.com/specimen/Onest</a>
+                        </div>
+                    </div>
+                </div>
+            </small>
+        </div>
+    </footer>
+</body>
+
+</html>

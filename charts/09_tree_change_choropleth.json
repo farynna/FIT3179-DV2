@@ -1,0 +1,95 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth map showing percentage change in tree cover across Australian states and territories, 2016–2020.",
+  "width": "container",
+  "height": 550,
+  "padding": {
+    "bottom": 25,
+    "top": -50
+  },
+  "projection": {
+    "type": "mercator",
+    "center": [134, -27],
+    "scale": 620
+  },
+  "data": {
+    "url": "data/states.geojson",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.STATE_NAME",
+      "from": {
+        "data": {
+          "url": "data/tree_cover_change.csv",
+          "format": {
+            "type": "csv"
+          }
+        },
+        "key": "State",
+        "fields": ["Tree change"]
+      },
+      "as": ["Change"]
+    }
+  ],
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#6d8376",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "color": {
+      "field": "Change",
+      "type": "quantitative",
+      "scale": {
+        "domain": [-10, -5, -1, -0.1, 0, 0.01, 1, 5, 10, 12],
+        "range": ["#c51b7d", "#e9a3c9", "#fde0ef", "#fff0f7", "#f7f7f7", "#e6f5d0", "#c2e699", "#a1d76a", "#4d9221", "#276419"]
+      },
+      "legend": {
+        "title": "Tree cover change (%)",
+        "orient": "none",
+        "values": [-10, -5, 0, 5, 10],
+        "labelExpr": "format(datum.value, '.0f')",
+        "labelOverlap": false,
+        "legendX": 100,
+        "legendY": 515,
+        "direction": "horizontal",
+        "gradientLength": 400,
+        "gradientThickness": 18,
+        "titleLimit": 250
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.STATE_NAME",
+        "type": "nominal",
+        "title": "State or territory"
+      },
+      {
+        "field": "Change",
+        "type": "quantitative",
+        "title": "Tree cover change (%)",
+        "format": ".2f"
+      }
+    ]
+  },
+  "background": "transparent",
+  "config": {
+    "font": "Onest",
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelFont": "Onest",
+      "titleFont": "Onest",
+      "labelColor": "#26382d",
+      "titleColor": "#26382d"
+    },
+    "text": {
+      "font": "Onest"
+    }
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Small-multiples slope chart showing how seven ecosystem services change for four Australian states from business-as-usual (BAU) to the High greening scenario.",
+  "background": "transparent",
+  "padding": {
+    "top": 30,
+    "left": 40,
+    "bottom": 10
+  },
+  "data": {
+    "url": "data/urban_eco_services.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Value": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.Scenario === 'BAU' || datum.Scenario === 'High'"
+    },
+    {
+      "calculate": "datum.Service === 'Local climate regulation' ? 'Local climate regulation|(Days above 35°C/year)' : datum.Service === 'Recreation enabling and visual amenity' ? 'Recreation enabling and|visual amenity|(' + datum.Unit + ')' : datum.Service + '|(' + datum.Unit + ')'",
+      "as": "Panel"
+    }
+  ],
+  "facet": {
+    "field": "Panel",
+    "type": "nominal",
+    "title": null,
+    "sort": [
+      "Local climate regulation|(Days above 35°C/year)",
+      "Carbon sequestration|(Thousand tonnes/year)",
+      "Carbon retention|(Thousand tonnes)",
+      "Water regulation (trees)|(Kilolitres/year)",
+      "Water regulation (other)|(Kilolitres/year)",
+      "Air filtration|(Tonnes/year)",
+      "Recreation enabling and|visual amenity|(Hectares)"
+    ],
+    "header": {
+      "labelOrient": "top",
+      "labelAnchor": "start",
+      "labelFontSize": 12,
+      "labelFontWeight": "bold",
+      "labelLimit": 170,
+      "labelExpr": "split(datum.value, '|')"
+    }
+  },
+  "columns": 4,
+  "align": "all",
+  "spacing": {
+    "column": 30,
+    "row": 40
+  },
+  "spec": {
+    "width": 165,
+    "height": 170,
+    "encoding": {
+      "x": {
+        "field": "Scenario",
+        "type": "ordinal",
+        "sort": ["BAU", "High"],
+        "title": null,
+        "scale": {
+          "padding": 0.5
+        },
+        "axis": {
+          "labelAngle": 0,
+          "labelFontSize": 11.2,
+          "grid": false
+        }
+      },
+      "y": {
+        "field": "Value",
+        "type": "quantitative",
+        "title": null,
+        "scale": {
+          "zero": false,
+          "nice": true
+        },
+        "axis": {
+          "tickCount": 4,
+          "labelExpr": "datum.value === 0 ? '0' : format(datum.value, '~s')"
+        }
+      },
+      "color": {
+        "field": "City",
+        "type": "nominal",
+        "scale": {
+          "domain": ["Adelaide", "Melbourne", "Perth", "Sydney"],
+          "range": ["#117733", "#1F5FA8", "#E78AC3", "#F0C808"]
+        },
+        "legend": {
+          "title": "City",
+          "titleFontSize": 12,
+          "labelFontSize": 12,
+          "orient": "none",
+          "legendX": -15,
+          "legendY": -100,
+          "direction": "horizontal"
+        }
+      }
+    },
+    "layer": [
+      {
+        "mark": {
+          "type": "line",
+          "strokeWidth": 2.5,
+          "opacity": 0.9
+        }
+      },
+      {
+        "mark": {
+          "type": "circle",
+          "size": 90,
+          "opacity": 0.85
+        },
+        "encoding": {
+          "tooltip": [
+            {
+              "field": "City",
+              "type": "nominal",
+              "title": "City"
+            },
+            {
+              "field": "Service",
+              "type": "nominal",
+              "title": "Service"
+            },
+            {
+              "field": "Scenario",
+              "type": "nominal",
+              "title": "Scenario"
+            },
+            {
+              "field": "Value",
+              "type": "quantitative",
+              "title": "Value",
+              "format": ","
+            },
+            {
+              "field": "Unit",
+              "type": "nominal",
+              "title": "Unit"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    },
+    "axis": {
+      "x": "independent",
+      "y": "independent"
+    }
+  },
+  "config": {
+    "font": "Onest",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Onest",
+      "titleFont": "Onest",
+      "labelColor": "#26382d",
+      "titleColor": "#26382d",
+      "domainColor": "#8b9a90",
+      "tickColor": "#8b9a90",
+      "gridColor": "#dfe6e2"
+    },
+    "header": {
+      "labelFont": "Onest",
+      "labelColor": "#26382d"
+    },
+    "legend": {
+      "labelFont": "Onest",
+      "labelColor": "#26382d",
+      "titleFont": "Onest",
+      "titleColor": "#26382d"
+    },
+    "text": {
+      "font": "Onest"
+    }
+  }
+}

@@ -1,0 +1,662 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --gutter: 4vw;
+}
+
+body {
+    margin: 0;
+    font-family: "Onest", sans-serif;
+    color: #26382d;
+    line-height: 1.6;
+    background-color: #fefff1;
+    overflow-x: clip;
+}
+
+/* Introduction */
+header {
+    padding: 40px var(--gutter) 30px;
+    background: linear-gradient(120deg, #153121, #40704c);
+    color: #ffffff;
+}
+
+header h1 {
+    max-width: 1000px;
+    margin: 5px 0 35px -10px;
+    font-size: 4.8rem;
+    line-height: 1.1;
+}
+
+header h1 .title-green {
+    color: #d1ffb9;
+}
+
+header h1 .title-accent {
+    display: block;
+    font-family: "Fraunces", serif;
+    letter-spacing: 1.2px;
+    margin: 0 0 0 6px;
+    font-size: 0.8em;
+    font-weight: 400;
+    font-style: italic;
+}
+
+header .tagline {
+    max-width: 650px;
+    font-size: 1.6rem;
+    line-height: 2;
+}
+
+header p {
+    max-width: 520px;
+    margin: 0 0 20px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+header .author {
+    margin-top: 42px;
+    color: #d6dbcf;
+    font-size: 0.85rem;
+}
+
+/* Sections */
+section {
+    display: grid;
+    grid-template-columns: var(--gutter) minmax(0, 1fr) var(--gutter);
+    padding: 38px 0 10px;
+    border-bottom: 1px solid #d9dfd5;
+}
+
+section > * {
+    grid-column: 2;
+}
+
+section > [id^="chart"],
+section > .chart-row {
+    grid-column: 1 / -1;
+}
+
+section h2 {
+    justify-self: start;
+    padding: 4px 12px;
+    margin: 8px 0 12px;
+    border: 1.5px solid #6da184;
+    border-radius: 18px;
+    background-color: #edf9e9;
+    color: #183a27;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+section h3 {
+    max-width: min(1000px, 100%);
+    width: max-content;
+    margin: 23px 0 18px;
+    font-size: 2rem;
+    line-height: 1.25;
+}
+
+section p {
+    max-width: 450px;
+    margin: 12px 0 20px;
+    font-size: 1.05rem;
+}
+
+section h4 {
+    width: 600px;
+    max-width: 100%;
+    margin: 15px 0 12px;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: #545555;
+}
+
+.quantity-word {
+    color: #21603c;
+    font-weight: 700;
+}
+
+.accessibility-word {
+    color: #459e45;
+    font-weight: 700;
+}
+
+/* Chart containers */
+[id^="chart"] {
+    width: 100%;
+    margin: 12px 0 18px;
+    min-height: 452px;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+/* Centre charts */
+[id^="chart"] > .vega-embed {
+    justify-self: center;
+    width: auto !important;
+    max-width: 100%;
+    margin: 0 auto !important;
+}
+
+#chart6 {
+    display: flex !important;
+    justify-content: center;
+}
+
+[id^="chart"] > .vega-embed > div {
+    margin: 0 auto !important;
+}
+
+/* Side-by-side charts */
+.chart-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 2rem 0;
+}
+
+.chart-card h4 {
+    width: auto;
+    margin: 0 var(--gutter);
+    line-height: 1.4;
+}
+
+/* Title of centred dot map */
+.chart-card h4.chart6-title {
+    width: 100%;
+    margin: 0 0 0 -38px;
+}
+
+.chart-card > [id^="chart"] {
+    margin: 0;
+}
+
+/* Canberra and Melbourne map annotations */
+.map-callout-1,
+.map-callout-2 {
+    position: absolute;
+    z-index: 2;
+    width: 200px;
+    padding: 12px 16px;
+    background: #fefff1;
+    border: 1px solid #6da184;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    line-height: 1.4;
+}
+
+.map-callout-1 {
+    top: 1440px;
+    left: 530px;
+}
+
+.map-callout-2 {
+    top: 1320px;
+    left: 530px;
+}
+
+/* Annotation lines */
+.map-callout-1::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 113px;
+    height: 2px;
+    background: #939a93;
+    right: 100%;
+    top: 50%;
+    transform: rotate(42deg);
+    transform-origin: right center;
+}
+
+.map-callout-2::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 35px;
+    height: 2px;
+    background: #939a93;
+    right: 100%;
+    top: 50%;
+    transform: rotate(-10deg);
+    transform-origin: right center;
+}
+
+.callout-title {
+    color: #153523;
+    font-weight: 700;
+}
+
+.map-callout-1 p,
+.map-callout-2 p {
+    margin: 3px 0 0;
+    font-size: 0.75rem;
+}
+
+.green-number {
+    color: #21603c;
+    font-weight: 700;
+}
+
+.access-number {
+    color: #459e45;
+    font-weight: 700;
+}
+
+/* Side-by-side introductory paragraphs */
+.intro-row {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 6.4rem;
+    margin-bottom: 20px;
+}
+
+.intro-row p {
+    max-width: 500px;
+    margin: 12px 0 -5px;
+}
+
+/* Chart context paragraphs */
+.bottom-row {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 12rem;
+    row-gap: 11px;
+    align-items: start;
+    margin: 1rem 0 2rem;
+}
+
+.bottom-row p {
+    max-width: 480px;
+    margin: 0;
+}
+
+.context-text {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    max-width: 480px;
+}
+
+.intro-row .chart1-context {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.intro-row .chart1-context-2 {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.chart1-context {
+    margin-top: 28px !important;
+    margin-bottom: 1px !important;
+    margin-left: 0.33px !important;
+}
+
+.chart1-context-2 {
+    margin-top: 38px !important;
+    margin-left: 0.33px !important;
+}
+
+.chart3-context {
+    position: relative !important;
+    top: 90px !important;
+    left: 60px !important;
+    max-width: 500px !important;
+}
+
+.chart4-context {
+    margin-top: -1.5px;
+    margin-left: 51.5px;
+    margin-bottom: 0;
+    line-height: 1.6;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.chart5-context {
+    margin-left: 51.5px;
+    margin-bottom: 0;
+    line-height: 1.6;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.chart6-pre-context, 
+.chart6-context {
+    margin-left: -24px;
+}
+
+.chart7-context {
+    margin-top: 40px;
+    margin-left: 54.5px;
+}
+
+.chart8-context {
+    margin-top: 148px;
+    margin-left: 335px;
+    max-width: 240px;
+}
+
+.chart8-context-2 {
+    margin-top: 63px;
+    margin-left: 147px;
+    max-width: 450px;
+}
+
+#chart5 {
+    transform: translateX(-15px);
+}
+
+#chart9 {
+    transform: translateX(-20px) scale(0.92);
+    transform-origin: center center;
+}
+
+#chart10 {
+    transform: translateX(-16px);
+}
+
+.chart9-context {
+    margin-top: 49px;
+    margin-left: 51.5px;
+    max-width: 480px;
+}
+
+.chart10-context {
+    margin-top: 44px;
+    margin-left: 51.5px;
+    max-width: 480px;
+}
+
+.footnote-chart1 {
+    grid-column: 2;
+    margin-top: -19px !important;
+    margin-left: 5px !important;
+    max-width: 420px !important;
+    font-size: 0.88rem;
+}
+
+.footnote-chart1 + .footnote-chart1 {
+    margin-top: 1px !important;
+}
+
+.footnote-chart7 {
+    max-width: 400px !important;
+    margin-top: 100px !important;
+    margin-left: 56px !important;
+    font-size: 0.88rem;
+}
+
+/* Footer: conclusion, author, date, notes, references */
+.footer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 6.8rem;
+}
+
+.footer-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 25px;
+}
+
+.footer-left p {
+    margin-top: 10px;
+}
+
+.footer-right small {
+    display: block;
+    max-width: 450px;
+    margin-top: 13px;
+}
+
+.footer-sources {
+    margin-top: 40px;
+}
+
+.sources-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 6.8rem;
+    align-items: start;
+}
+
+.sources-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.reference {
+    max-width: 450px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.notes-title, .sources-title {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: #d1ffb9;
+}
+
+.genai-title {
+    margin-top: -12px;
+    margin-bottom: -8.6px;
+}
+
+/* Stack columns on narrower screens */
+@media (max-width: 900px) {
+    .chart-row {
+        grid-template-columns: 1fr;
+        row-gap: 2.5rem;
+    }
+
+    .bottom-row {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: 0;
+    }
+
+    .context-text,
+    .footnote-chart1 {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    /* Intro paragraphs stacked */
+    .intro-row .chart1-context,
+    .intro-row .chart1-context-2 {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    /* Callouts become centred boxes below map */
+    .map-callout-1,
+    .map-callout-2 {
+        position: static;
+        width: min(260px, calc(100% - 2 * var(--gutter)));
+        max-width: none;
+        margin: 12px auto 0;
+    }
+
+    .map-callout-1::before,
+    .map-callout-2::before {
+        display: none;
+    }
+
+    /* Let charts overflow */
+    [id^="chart"] {
+        overflow-x: auto;
+    }
+
+    /* Cancel chart shifts and scaling */
+    #chart5,
+    #chart9,
+    #chart10 {
+        transform: none;
+    }
+
+    /* Reset text offsets */
+    .chart3-context {
+        top: 0 !important;
+        left: 0 !important;
+        width: auto !important;
+        margin-left: var(--gutter);
+        margin-right: var(--gutter);
+    }
+
+    .chart4-context,
+    .chart5-context,
+    .chart7-context,
+    .chart9-context,
+    .chart10-context {
+        margin-top: 16px;
+        margin-left: var(--gutter);
+        margin-right: var(--gutter);
+        width: auto;
+        max-width: none;
+    }
+
+    .chart8-context,
+    .chart8-context-2 {
+        margin-top: 16px;
+        margin-left: var(--gutter);
+        margin-right: var(--gutter);
+        max-width: none;
+    }
+
+    .chart6-pre-context,
+    .chart6-context {
+        margin-left: 0;
+    }
+
+    .chart-card h4.chart6-title {
+        margin: 0;
+    }
+
+    /* Space between context paragraph and footnotes */
+    .bottom-row .context-text {
+        margin-bottom: 24px;
+    }
+
+    /* Footnotes */
+    .footnote-chart1 {
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        max-width: none !important;
+    }
+
+    .footnote-chart1 + .footnote-chart1 {
+        margin-top: 8px !important;
+    }
+
+    .footnote-chart7 {
+        margin-top: 24px !important;
+        margin-left: var(--gutter) !important;
+        margin-right: var(--gutter) !important;
+        max-width: none !important;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .sources-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Remove divider after Section 4 */
+#change {
+    border-bottom: none;
+    margin-bottom: 22px;
+}
+
+footer {
+    padding: 40px var(--gutter);
+    background: linear-gradient(120deg, #153121, #40704c);
+    color: #e0efe0;
+}
+
+footer p {
+    max-width: 450px;
+    margin-top: 4.5px;
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.reference,
+.reference a {
+    color: #d0d2d0;
+}
+
+/* Scroll animations */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: transform, opacity;
+}
+
+.js .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --gutter: 5vw;
+    }
+
+    header {
+        padding: 40px var(--gutter);
+    }
+
+    header h1 {
+        font-size: 3rem;
+    }
+
+    main {
+        padding: 15px 0;
+    }
+
+    section {
+        padding: 30px 0;
+    }
+
+    section h3 {
+        font-size: 1.7rem;
+    }
+
+    [id^="chart"] {
+        min-height: 0;
+        overflow-x: auto;
+    }
+
+    [id^="chart"] .vega-embed {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    .intro-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
