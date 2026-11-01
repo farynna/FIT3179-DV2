@@ -56,7 +56,7 @@
         "domain": [0, 55]
       },
       "axis": {
-        "title": "Proportion (%)",
+        "title": "Participation rate (%)",
         "titleFontSize": 11.5,
         "grid": true,
         "tickCount": 6
@@ -96,7 +96,7 @@
           {
             "field": "ProportionValue",
             "type": "quantitative",
-            "title": "Proportion (%)",
+            "title": "Participation rate (%)",
             "format": ".1f"
           }
         ]
